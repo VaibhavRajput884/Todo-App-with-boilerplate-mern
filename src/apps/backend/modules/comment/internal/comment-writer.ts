@@ -21,10 +21,7 @@ import {
           comment: params.comment,
           active: true,
         })
-      ).populate({
-        path: 'account',
-        model: 'accounts',
-      });
+      )
       return CommentUtil.convertCommentDBToComment(createdComment);
     }
   
@@ -44,10 +41,7 @@ import {
           },
         },
         { new: true },
-      ).populate({
-        path: 'account',
-        model: 'accounts',
-      });
+      )
   
       if (!comment) {
         throw new CommentNotFoundError(params.commentId);
