@@ -1,7 +1,7 @@
 import { accessAuthMiddleware } from '../../access-token';
 import { ApplicationRouter } from '../../application';
 
-import { CommentController } from './comment-controller';
+import { CommentController } from './task-comment-controller';
 
 export default class CommentRouter extends ApplicationRouter {
   configure(): void {

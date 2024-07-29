@@ -1,6 +1,6 @@
 import { applicationController, Request, Response } from '../../application';
 import { HttpStatusCodes } from '../../http';
-import CommentService from '../comment-service';
+import CommentService from '../task-comment-service';
 import {
   Comment,
   CreateCommentParams,
@@ -9,7 +9,7 @@ import {
   GetCommentParams,
 } from '../types';
 
-import { serializeCommentAsJSON } from './comment-serializer';
+import { serializeCommentAsJSON } from './task-comment-serializer';
 
 export class CommentController {
   createComment = applicationController(

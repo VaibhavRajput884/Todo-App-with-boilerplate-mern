@@ -1,6 +1,6 @@
 import { ApplicationServer } from '../../application';
 
-import CommentRouter from './comment-router';
+import CommentRouter from './task-comment-router';
 
 export default class CommentServer extends ApplicationServer {
   configure(): void {

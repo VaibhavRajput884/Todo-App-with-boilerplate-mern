@@ -2,7 +2,7 @@ import chai, {expect} from "chai";
 import chaiHttp from "chai-http";
 import {Account} from '../../../src/apps/backend/modules/account'
 import {AccessToken} from '../../../src/apps/backend/modules/access-token'
-import { CommentService } from "../../../src/apps/backend/modules/comment";
+import { CommentService } from "../../../src/apps/backend/modules/task-comment";
 import { createAccount } from "../../helpers/account";
 import { app } from "../../helpers/app";
 import { TaskService } from "../../../src/apps/backend/modules/task";

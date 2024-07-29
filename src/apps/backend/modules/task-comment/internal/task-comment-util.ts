@@ -1,5 +1,5 @@
 import { Comment } from '../types';
-import { CommentDB } from './store/comment-db';
+import { CommentDB } from './store/task-comment-db';
 import { Account } from '../../account/types';
 import { Types } from 'mongoose';
 

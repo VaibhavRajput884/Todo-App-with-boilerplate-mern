@@ -1,6 +1,6 @@
 import { GetCommentParams, Comment, CommentNotFoundError } from '../types';
-import CommentRepository from './store/comment-repository';
-import CommentUtil from './comment-util';
+import CommentRepository from './store/task-comment-repository';
+import CommentUtil from './task-comment-util';
 
 export default class CommentReader {
   public static async getCommentForAccount(

@@ -5,8 +5,8 @@ import {
     UpdateCommentParams,
   } from './types';
   
-  import CommentWriter from './internal/comment-writer';
-  import CommentReader from './internal/comment-reader';
+  import CommentWriter from './internal/task-comment-writer';
+  import CommentReader from './internal/task-comment-reader';
   
   export default class CommentService {
     public static async createComment(
