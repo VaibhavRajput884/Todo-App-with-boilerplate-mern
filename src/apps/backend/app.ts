@@ -12,6 +12,8 @@ import { Logger, CustomLoggerTransport } from './modules/logger';
 import { PasswordResetTokenServer } from './modules/password-reset-token';
 import { TaskServer } from './modules/task';
 import { CommentServer } from './modules/task-comment';
+import { SharedTaskServer } from './modules/shared-task';
+
 
 const isDevEnv = process.env.NODE_ENV === 'development';
 
@@ -62,6 +64,8 @@ export default class App {
       new PasswordResetTokenServer(),
       new TaskServer(),
       new CommentServer(),
+      new SharedTaskServer(),
+
     ].forEach((server) => {
       app.use('/', server.server);
     });
