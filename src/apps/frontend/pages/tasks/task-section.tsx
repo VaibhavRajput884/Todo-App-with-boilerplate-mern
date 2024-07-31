@@ -18,6 +18,7 @@ import TaskModal from './task-modal';
 import useTaskForm from './tasks-form.hook';
 import CommentList from './comment-list';
 import AddComment from './add-comment';
+import ShareTaskModal from './share-task-modal';
 
 interface TaskSectionProps {
   handleDeleteTask: (taskId: string) => void;
@@ -33,6 +34,8 @@ const TaskSection: React.FC<TaskSectionProps> = ({
   tasks,
 }) => {
   const [updateTaskModal, setUpdateTaskModal] = useState(false);
+  const [shareTaskModal, setShareTaskModal] = useState(false);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
 
   const onSuccess = () => {
@@ -50,6 +53,11 @@ const TaskSection: React.FC<TaskSectionProps> = ({
     setFormikFieldValue(updateTaskFormik, 'title', task.title);
     setFormikFieldValue(updateTaskFormik, 'id', task.id);
     setFormikFieldValue(updateTaskFormik, 'description', task.description);
+  };
+
+  const handleShareTask = (task: Task) => {
+    setSelectedTask(task);
+    setShareTaskModal(true);
   };
 
   const toggleComments = (taskId: string) => {
@@ -106,11 +114,21 @@ const TaskSection: React.FC<TaskSectionProps> = ({
                 Delete
               </Button>
               <Button
+                onClick={() => handleShareTask(task)}
+                kind={ButtonKind.SECONDARY}
+                size={ButtonSize.DEFAULT}
+                startEnhancer={
+                  <img src="assets/svg/share-icon.svg" alt="Share task" />
+                }
+              >
+                Share
+              </Button>
+              <Button
                 onClick={() => toggleComments(task.id)}
                 kind={ButtonKind.SECONDARY}
                 size={ButtonSize.DEFAULT}
               >
-                {selectedTaskId === task.id ? 'Hide Comments' : 'Show Comments'}
+                {selectedTaskId === task.id ? 'Hide Comments' : 'Comments'}
               </Button>
             </MenuItem>
           </div>
@@ -119,7 +137,6 @@ const TaskSection: React.FC<TaskSectionProps> = ({
             <div className="mt-4 p-4 bg-gray-100 rounded">
               <CommentList taskId={task.id} />
               <AddComment taskId={task.id} />
-              
             </div>
           )}
         </div>
@@ -130,6 +147,11 @@ const TaskSection: React.FC<TaskSectionProps> = ({
         isModalOpen={updateTaskModal}
         setIsModalOpen={setUpdateTaskModal}
         btnText={'Update Task'}
+      />
+      <ShareTaskModal
+        task={selectedTask}
+        isModalOpen={shareTaskModal}
+        setIsModalOpen={setShareTaskModal}
       />
     </VerticalStackLayout>
   );
