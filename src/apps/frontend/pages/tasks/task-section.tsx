@@ -16,6 +16,8 @@ import { Task } from '../../types/task';
 
 import TaskModal from './task-modal';
 import useTaskForm from './tasks-form.hook';
+import CommentList from './comment-list';
+import AddComment from './add-comment';
 
 interface TaskSectionProps {
   handleDeleteTask: (taskId: string) => void;
@@ -31,6 +33,7 @@ const TaskSection: React.FC<TaskSectionProps> = ({
   tasks,
 }) => {
   const [updateTaskModal, setUpdateTaskModal] = useState(false);
+  const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
 
   const onSuccess = () => {
     toast.success('Task has been updated successfully');
@@ -47,6 +50,10 @@ const TaskSection: React.FC<TaskSectionProps> = ({
     setFormikFieldValue(updateTaskFormik, 'title', task.title);
     setFormikFieldValue(updateTaskFormik, 'id', task.id);
     setFormikFieldValue(updateTaskFormik, 'description', task.description);
+  };
+
+  const toggleComments = (taskId: string) => {
+    setSelectedTaskId(selectedTaskId === taskId ? null : taskId);
   };
 
   if (isGetTasksLoading) {
@@ -98,8 +105,23 @@ const TaskSection: React.FC<TaskSectionProps> = ({
               >
                 Delete
               </Button>
+              <Button
+                onClick={() => toggleComments(task.id)}
+                kind={ButtonKind.SECONDARY}
+                size={ButtonSize.DEFAULT}
+              >
+                {selectedTaskId === task.id ? 'Hide Comments' : 'Show Comments'}
+              </Button>
             </MenuItem>
           </div>
+
+          {selectedTaskId === task.id && (
+            <div className="mt-4 p-4 bg-gray-100 rounded">
+              <CommentList taskId={task.id} />
+              <AddComment taskId={task.id} />
+              
+            </div>
+          )}
         </div>
       ))}
 
