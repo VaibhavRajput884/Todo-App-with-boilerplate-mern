@@ -3,32 +3,32 @@ import { ApplicationError } from '../application';
 import { HttpStatusCodes } from '../http';
 import { Task } from '../task';
 
-export class SharedTask {
+export class ShareTaskRequest {
   id: string;
   task: string| Task;
   account: string | Account;
 }
 
-export type CreateSharedTaskParams = {
+export type CreateShareTaskRequestParams = {
   taskId: string;
   accountId: string;
 };
 
-export type CreateSharedTasksParams = {
+export type CreateShareTasksRequestParams = {
   taskId: string;
   accountIds: string[];
 };
 
-export interface GetSharedTaskParams {
+export interface GetShareTaskRequestParams {
   sharedTaskId: string;
   accountId: string;
 }
 
-export interface GetAllSharedTasksParams {
+export interface GetAllShareTasksRequestParams {
   accountId: string;
 }
 
-export class SharedTaskNotFoundError extends ApplicationError {
+export class ShareTaskRequestNotFoundError extends ApplicationError {
   code: string;
 
   constructor(sharedTaskId: string) {

@@ -12,7 +12,7 @@ export default class SharedTaskService extends APIService {
     ) as AccessToken;
     try {
       await this.apiClient.post(
-        '/shared-tasks',
+        '/share-task-request',
         { taskId, accountIds },
         {
           headers: {
@@ -31,7 +31,7 @@ export default class SharedTaskService extends APIService {
       localStorage.getItem('access-token'),
     ) as AccessToken;
     try {
-      const response = await this.apiClient.get('/shared-tasks', {
+      const response = await this.apiClient.get('/share-task-request', {
         headers: {
           Authorization: `Bearer ${userAccessToken.token}`,
         },

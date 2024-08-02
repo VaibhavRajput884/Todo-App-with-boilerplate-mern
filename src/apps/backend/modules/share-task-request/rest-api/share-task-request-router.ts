@@ -1,11 +1,11 @@
 import { accessAuthMiddleware } from '../../access-token';
 import { ApplicationRouter } from '../../application';
-import { SharedTaskController } from './shared-task-controller';
+import { ShareTaskRequestController } from './share-task-request-controller';
 
-export default class SharedTaskRouter extends ApplicationRouter {
+export default class ShareTaskRequestRouter extends ApplicationRouter {
   configure(): void {
     const { router } = this;
-    const controller = new SharedTaskController();
+    const controller = new ShareTaskRequestController();
 
     router.use(accessAuthMiddleware);
 
