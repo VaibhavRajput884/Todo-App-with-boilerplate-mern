@@ -5,13 +5,13 @@ import { Account } from '../../account/types';
 import { Types } from 'mongoose';
 
 export default class ShareTaskRequestUtil {
-  public static convertSharedTaskDBToSharedTask(
-    sharedTaskDb: ShareTaskRequestDB
+  public static convertShareTaskDBRequestToShareTaskRequest(
+    shareTaskRequestDb: ShareTaskRequestDB
   ): ShareTaskRequest {
     return {
-      id: sharedTaskDb._id.toString(),
-      task: this.convertTask(sharedTaskDb.task),
-      account: this.convertAccount(sharedTaskDb.account),
+      id: shareTaskRequestDb._id.toString(),
+      task: this.convertTask(shareTaskRequestDb.task),
+      account: this.convertAccount(shareTaskRequestDb.account),
     } as ShareTaskRequest;
   }
 

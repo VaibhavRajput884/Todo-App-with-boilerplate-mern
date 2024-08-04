@@ -1,4 +1,4 @@
-import { ShareTaskRequest, CreateShareTaskRequestParams } from '../types';
+import { ShareTaskRequest, CreateShareTaskRequestParams, ShareTaskRequestStatus } from '../types';
 
 import ShareTaskRequestRepository from './store/share-task-request-repository';
 import ShareTaskRequestUtil from './share-task-request-util';
@@ -10,8 +10,8 @@ export default class ShareTaskRequestWriter {
     const createdSharedTask = await ShareTaskRequestRepository.create({
       task: params.taskId,
       account: params.accountId,
-      status: 'approved',
+      status: ShareTaskRequestStatus.Approved,
     });
-    return ShareTaskRequestUtil.convertSharedTaskDBToSharedTask(createdSharedTask);
+    return ShareTaskRequestUtil.convertShareTaskDBRequestToShareTaskRequest(createdSharedTask);
   }
 }

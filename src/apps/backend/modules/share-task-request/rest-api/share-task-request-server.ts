@@ -7,6 +7,6 @@ export default class ShareTaskRequestServer extends ApplicationServer {
     const { server } = this;
     const router = new ShareTaskRequestRouter();
 
-    server.use('/share-task-request', router.router);
+    server.use( router.router);
   }
 }

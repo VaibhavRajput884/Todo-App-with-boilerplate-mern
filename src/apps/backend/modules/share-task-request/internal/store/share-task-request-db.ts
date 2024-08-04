@@ -1,10 +1,11 @@
 import { Schema, Types } from 'mongoose';
+import { ShareTaskRequestStatus } from '../../types';
 
 export interface ShareTaskRequestDB {
   _id: Types.ObjectId;
   task: Types.ObjectId;
   account: Types.ObjectId;
-  status: 'pending' | 'approved' | 'declined';
+  status: ShareTaskRequestStatus;
 }
 
 export const ShareTaskRequestDbSchema: Schema = new Schema<ShareTaskRequestDB>(
@@ -23,14 +24,13 @@ export const ShareTaskRequestDbSchema: Schema = new Schema<ShareTaskRequestDB>(
     },
     status: {
       type: String,
-      enum: ['pending', 'approved', 'declined'],
-      default: 'approved', 
+      enum: Object.values(ShareTaskRequestStatus),
+      default: ShareTaskRequestStatus.Approved,
       required: true,
     },
-
   },
   {
-    collection: 'share-task-request',
+    collection: 'share-task-requests',
     timestamps: {
       createdAt: 'createdAt',
       updatedAt: 'updatedAt',

@@ -9,7 +9,7 @@ export default class ShareTaskRequestRouter extends ApplicationRouter {
 
     router.use(accessAuthMiddleware);
 
-    router.post('/', controller.createSharedTask);
-    router.get('/', controller.getSharedTasks);
+    router.post('/tasks/:taskId/share-task-requests', controller.createSharedTask);
+    router.get('/share-task-request', controller.getSharedTasks);
   }
 }

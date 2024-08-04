@@ -11,22 +11,22 @@ import {
     public static async getSharedTaskForAccount(
       params: GetShareTaskRequestParams,
     ): Promise<ShareTaskRequest> {
-      const sharedTaskDb = await ShareTaskRequestRepository.findOne({
+      const shareTaskRequestDb = await ShareTaskRequestRepository.findOne({
         _id: params.sharedTaskId,
         account: params.accountId,
       })
       
-      if (!sharedTaskDb) {
+      if (!shareTaskRequestDb) {
         throw new ShareTaskRequestNotFoundError(params.sharedTaskId);
       }
   
-      return ShareTaskRequestUtil.convertSharedTaskDBToSharedTask(sharedTaskDb);
+      return ShareTaskRequestUtil.convertShareTaskDBRequestToShareTaskRequest(shareTaskRequestDb);
     }
   
     public static async getSharedTasksForAccount(
       params: GetAllShareTasksRequestParams,
     ): Promise<ShareTaskRequest[]> {
-      const sharedTasksDb = await ShareTaskRequestRepository.find({
+      const shareTasksRequestDb = await ShareTaskRequestRepository.find({
         account: params.accountId,
       })
         .populate({
@@ -38,8 +38,8 @@ import {
           },
         })
   
-      return sharedTasksDb.map((sharedTaskDb) =>
-        ShareTaskRequestUtil.convertSharedTaskDBToSharedTask(sharedTaskDb),
+      return shareTasksRequestDb.map((shareTaskRequestDb) =>
+        ShareTaskRequestUtil.convertShareTaskDBRequestToShareTaskRequest(shareTaskRequestDb),
         );
     }
   }

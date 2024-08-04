@@ -12,7 +12,7 @@ export default class SharedTaskService extends APIService {
     ) as AccessToken;
     try {
       await this.apiClient.post(
-        '/share-task-request',
+        `/tasks/${taskId}/share-task-requests`,
         { taskId, accountIds },
         {
           headers: {

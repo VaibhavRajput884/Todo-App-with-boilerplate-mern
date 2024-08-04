@@ -5,7 +5,7 @@ import { Task } from '../task';
 
 export class ShareTaskRequest {
   id: string;
-  task: string| Task;
+  task: string | Task;
   account: string | Account;
 }
 
@@ -26,6 +26,12 @@ export interface GetShareTaskRequestParams {
 
 export interface GetAllShareTasksRequestParams {
   accountId: string;
+}
+
+export enum ShareTaskRequestStatus {
+  Pending = 'pending',
+  Approved = 'approved',
+  Declined = 'declined',
 }
 
 export class ShareTaskRequestNotFoundError extends ApplicationError {
