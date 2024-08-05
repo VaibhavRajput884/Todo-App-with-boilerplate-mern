@@ -8,7 +8,7 @@ import {
   import ShareTaskRequestUtil from './share-task-request-util';
   
   export default class ShareTaskRequestReader {
-    public static async getSharedTaskForAccount(
+    public static async getSharedTaskRequestForAccount(
       params: GetShareTaskRequestParams,
     ): Promise<ShareTaskRequest> {
       const shareTaskRequestDb = await ShareTaskRequestRepository.findOne({
@@ -23,7 +23,7 @@ import {
       return ShareTaskRequestUtil.convertShareTaskDBRequestToShareTaskRequest(shareTaskRequestDb);
     }
   
-    public static async getSharedTasksForAccount(
+    public static async getSharedTaskRequestsForAccount(
       params: GetAllShareTasksRequestParams,
     ): Promise<ShareTaskRequest[]> {
       const shareTasksRequestDb = await ShareTaskRequestRepository.find({

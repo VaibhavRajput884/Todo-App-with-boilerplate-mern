@@ -4,7 +4,7 @@ import ShareTaskRequestRepository from './store/share-task-request-repository';
 import ShareTaskRequestUtil from './share-task-request-util';
 
 export default class ShareTaskRequestWriter {
-  public static async createSharedTask(
+  public static async createSharedTaskRequest(
     params: CreateShareTaskRequestParams,
   ): Promise<ShareTaskRequest> {
     const createdSharedTask = await ShareTaskRequestRepository.create({

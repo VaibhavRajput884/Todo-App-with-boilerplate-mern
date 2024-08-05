@@ -6,12 +6,14 @@ export class Task {
   account: string;
   description: string;
   title: string;
+  sharedTask?: boolean;
 }
 
 export type GetAllTaskParams = {
   accountId: string;
   page?: number;
   size?: number;
+  sharedTask?: boolean;
 };
 
 export type GetTaskParams = {

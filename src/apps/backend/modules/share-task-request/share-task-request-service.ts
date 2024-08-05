@@ -7,15 +7,15 @@ import {
 } from './types';
 
 export default class ShareTaskRequestService {
-  public static async createSharedTask(
+  public static async createSharedTaskRequest(
     params: CreateShareTaskRequestParams,
   ): Promise<ShareTaskRequest> {
-    return ShareTaskRequestWriter.createSharedTask(params);
+    return ShareTaskRequestWriter.createSharedTaskRequest(params);
   }
 
-  public static async getSharedTasksForAccount(
+  public static async getSharedTaskRequestsForAccount(
     params: GetAllShareTasksRequestParams,
   ): Promise<ShareTaskRequest[]> {
-    return ShareTaskRequestReader.getSharedTasksForAccount(params);
+    return ShareTaskRequestReader.getSharedTaskRequestsForAccount(params);
   }
 }
