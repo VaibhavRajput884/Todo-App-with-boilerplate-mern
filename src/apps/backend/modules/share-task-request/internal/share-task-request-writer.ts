@@ -7,11 +7,11 @@ export default class ShareTaskRequestWriter {
   public static async createSharedTaskRequest(
     params: CreateShareTaskRequestParams,
   ): Promise<ShareTaskRequest> {
-    const createdSharedTask = await ShareTaskRequestRepository.create({
+    const createdSharedTaskRequest = await ShareTaskRequestRepository.create({
       task: params.taskId,
       account: params.accountId,
       status: ShareTaskRequestStatus.Approved,
     });
-    return ShareTaskRequestUtil.convertShareTaskDBRequestToShareTaskRequest(createdSharedTask);
+    return ShareTaskRequestUtil.convertShareTaskDBRequestToShareTaskRequest(createdSharedTaskRequest);
   }
 }
