@@ -20,14 +20,4 @@ export class ShareTaskRequestController {
       res.status(HttpStatusCodes.CREATED).send(sharedTasksJSON);
     },
   );
-
-  // getSharedTasks = applicationController(
-  //   async (req: Request, res: Response) => {
-  //     const params: GetAllShareTasksRequestParams = { accountId: req.accountId };
-  //     const sharedTasks = await ShareTaskRequestService.getSharedTaskRequestsForAccount(params);
-  //     const sharedTasksJSON = sharedTasks.map(serializeSharedTaskAsJSON);
-
-  //     res.status(HttpStatusCodes.OK).send(sharedTasksJSON);
-  //   },
-  // );
 }
