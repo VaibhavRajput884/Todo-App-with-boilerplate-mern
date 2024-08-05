@@ -64,10 +64,12 @@ export class TaskController {
   ) => {
     const page = +req.query.page;
     const size = +req.query.size;
+    const sharedTask=req.query.shardTask==='true';
     const params: GetAllTaskParams = {
       accountId: req.accountId,
       page,
       size,
+      sharedTask,
     };
 
     const tasks = await TaskService.getTasksForAccount(params);
